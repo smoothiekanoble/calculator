@@ -1,0 +1,141 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.app-square {
+    background-color: #CECECE;
+    margin: auto;
+    width: 800px;
+    height: 800px;
+    border-radius: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    background-color: #191919;
+    width: 400px;
+    height: 575px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+#console {
+    flex: 4;
+    background-color: #4E4E4E;
+    margin: 35px 35px 25px 35px;
+    border-radius: 20px;
+    display: flex;
+    color: white;
+    justify-content: right;
+    align-items: end;
+    font-size: 3.5em;
+    padding: 12px;
+}
+
+.interface {
+    flex: 5;
+    margin: 0px 35px 35px 35px;
+    display: flex;
+}
+
+button {
+    width: 65px;
+    height: 65px;
+    background-color: #4E4E4E;
+    color: white;
+    border-radius: 100px;
+    border: none;
+    box-shadow: none;
+    font-size: 2em;
+    font-weight: 550;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 4px
+}
+
+.gray {
+    background-color: #CECECE;
+    color: black;
+}
+
+.orange {
+    background-color: #F2932A;
+    color: white;
+}
+
+.c012 {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+}
+
+.c12 {
+    display: flex;
+    flex: 4;
+}
+
+.c1 {
+    display: flex;
+    height: 100%;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.c2 {
+    display: flex;
+    height: 100%;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.zero {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+#zero {
+    width: 100%;
+}
+
+.c3 {
+    display: flex;
+    height: 100%;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.c4 {
+    display: flex;
+    height: 100%;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#AC, #sev, #fou, #one, #sign, #eig, #fiv, #two, #percent, #nin, #six, #thr, #zero, #dec, #div, #tim, #min, #plu, #equ {
+    margin: 5px;
+}
