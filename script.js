@@ -13,7 +13,7 @@
 let display = 0;
 const MAX_DISPLAY = 9999999999;
 
-function getInput() {
+function loadCalculator() {
     let a = new Array();
     let c = new Array();
     let b = undefined;
@@ -146,7 +146,7 @@ function getInput() {
                 }
             } else if (focusOnA == true && a.length < 10) {
                 //DONE add edge cases for 0 and . 
-                //add edge case for overriding previous operation
+                //DONE add edge case for overriding previous operation
                 //DONE add edge case for overflow
                 if (b != undefined && c.length != 0) {
                     a = [];
@@ -186,18 +186,52 @@ function getInput() {
 function arrayToNumber(a, isNegative) { 
     if (a === undefined || a.length == 0) return 0; // account for if number is just '.'
     if (Number(a.join('')) == NaN) return "ERROR";
-    if (a.join('') == '.') return (isNegative) ? '-0.' : '0.';
-    if (a[a.length - 1] == '.') return Number(a.join('')) * ((isNegative) ? -1 : 1) + '.';
+    // if (a.join('') == '.') return (isNegative) ? '-0.' : '0.';
+    // if (a[a.length - 1] == '.') return Number(a.join('')) * ((isNegative) ? -1 : 1) + '.';
+    // if (a.includes('.') && a.every((char, index) => index > a.indexOf('.') ? char === '0' : true) && a.length < 10) {
+    //     return (isNegative ? '-' : '') + a.join('');
+    // }
+    if (a.includes('.')) {
+        let result = a.join('');
+        
+        // Handle the case where the array contains only a decimal point and trailing zeros
+        if (a[0] === '.' && a.slice(1).every(char => char === '0') && a.length < 10) {
+            return (isNegative ? '-' : '') + '0' + result;
+        }
+        
+        // Ensure the leading zero is included for cases like .60000
+        if (a[0] === '.' && a.length < 10) {
+            result = '0' + result;
+        }
+
+        result = result.replace(/^0+(?=\d)/, '');
+
+        // Remove leading zeros before the decimal point
+        if (result[0] === '0' && result[1] !== '.') {
+            result = result.replace(/^0+(?=\d)/, '');
+        }
+        
+        // Ensure trailing zeros after the decimal point are preserved
+        if (a.slice(a.indexOf('.') + 1).every(char => char === '0') && a.length < 10) {
+            return (isNegative ? '-' : '') + result;
+        }
+        
+        return (isNegative ? '-' : '') + result;
+    }
     
+    // Remove leading zeros for non-decimal values
     return Number(a.join('')) * ((isNegative) ? -1 : 1);
+
 }
 
 function operate(inputA, b, inputC, negativeA, negativeC) {
     a = arrayToNumber(inputA, negativeA);
     c = arrayToNumber(inputC, negativeC);
-    if (b === '/'){
+    console.log(typeof b);
+    console.log('&#215;');
+    if (b === '÷'){
         return div(a, c);
-    } else if (b === 'x'){
+    } else if (b === '×'){
         return mult(a, c);
     } else if (b === '-'){
         return min(a, c);
@@ -212,7 +246,7 @@ function operate(inputA, b, inputC, negativeA, negativeC) {
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 addEventListener("DOMContentLoaded", () => {
-    getInput();
+    loadCalculator();
 });
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
