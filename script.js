@@ -195,9 +195,9 @@ function arrayToNumber(a, isNegative) {
 function operate(inputA, b, inputC, negativeA, negativeC) {
     a = arrayToNumber(inputA, negativeA);
     c = arrayToNumber(inputC, negativeC);
-    if (b === '&#247'){
+    if (b === '/'){
         return div(a, c);
-    } else if (b === '&#215;'){
+    } else if (b === 'x'){
         return mult(a, c);
     } else if (b === '-'){
         return min(a, c);
