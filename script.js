@@ -26,6 +26,13 @@ function loadCalculator() {
     input.forEach((button) => {
         button.addEventListener('click', (e) => {
             console.log(e.target.innerText);
+            input.forEach((btn) => {
+                btn.style.color = "";
+                btn.style.backgroundColor = "";
+            });
+
+            // Change the clicked button's colors
+            
             if (e.target.className === 'orange'){
                 if (a.length > 0) {
                     if (e.target.innerText == "=") {
@@ -85,12 +92,13 @@ function loadCalculator() {
                             display = arrayToNumber(a, negativeA);
                             out.innerText = display;
                         }
+                        e.target.style.color = "#F2932A";
+                        e.target.style.backgroundColor = "white";
                     }
                     negativeC = false;
                     //first time, focusOnA: true to false
                     //after, focusOnA: false to false 
                     
-                     
                 } 
             } else if (e.target.className === 'gray') {
                 if (e.target.innerText === 'AC') {
@@ -181,6 +189,20 @@ function loadCalculator() {
             // console.log('c: ' + arrayToNumber(c, negativeC));
         });
     }); 
+    input.forEach((button) => {
+        button.addEventListener('mousedown', (e) => {
+            input.forEach((btn) => {
+                btn.style.color = "";
+                btn.style.backgroundColor = "";
+            });
+            
+            if (e.target.className === "gray") {
+                e.target.style.backgroundColor = '#737373';
+            } else if (e.target.className !== "orange") {
+                e.target.style.backgroundColor = '#D9D9D9';
+            }
+        });
+    });
 }
 
 function arrayToNumber(a, isNegative) { 
