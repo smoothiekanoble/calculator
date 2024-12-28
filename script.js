@@ -293,7 +293,7 @@ function min(a, b){
 function clean(a) {
     a = Math.round(Number(a) * 10000000000)/10000000000; // Number() probably sets to scientific notation after certain
                                                             // amount of decimal places. Find new way to typecast 
-    if (a > MAX_DISPLAY) return NaN;
+    if (a > MAX_DISPLAY || a < MAX_DISPLAY * -1) return NaN;
     if (Math.round(a) == a) return a;
     let lhs = Math.round(a).toString().length;
     console.log(lhs);
