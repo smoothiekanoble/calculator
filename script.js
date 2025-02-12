@@ -245,7 +245,7 @@ function arrayToNumber(a, isNegative) {
     return Number(a.join('')) * ((isNegative) ? -1 : 1);
 
 }
-
+//comment for 331 lab showing i can merge branches or wtv
 function operate(inputA, b, inputC, negativeA, negativeC) {
     a = arrayToNumber(inputA, negativeA);
     c = arrayToNumber(inputC, negativeC);
